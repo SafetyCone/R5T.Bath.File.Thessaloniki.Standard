@@ -36,6 +36,9 @@ namespace R5T.Bath.File.Thessaloniki.Standard
             return services;
         }
 
+        /// <summary>
+        /// Uses the <see cref="DefaultHumanOutputFileNameProvider"/> service.
+        /// </summary>
         public static IServiceCollection AddHumanOutputFilePathProvider_TemporaryDirectoryBased<TStringlyTypedPathOperator>(this IServiceCollection services)
             where TStringlyTypedPathOperator : class, IStringlyTypedPathOperator
         {
