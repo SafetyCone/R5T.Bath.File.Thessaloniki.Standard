@@ -12,7 +12,7 @@ namespace R5T.Bath.File.Thessaloniki.Standard
 {
     public static class IServiceCollectionExtensions
     {
-        public static IServiceCollection AddTemporaryDirectoryBasedHumanOutputFileDirectoryPathProvider(this IServiceCollection services)
+        public static IServiceCollection AddHumanOutputFileDirectoyPathProvider_TemporaryDirectoryBased(this IServiceCollection services)
         {
             services
                 .AddSingleton<IHumanOutputFileDirectoryPathProvider, TemporaryDirectoryBasedHumanOutputFileDirectoryPathProvider>()
@@ -22,13 +22,13 @@ namespace R5T.Bath.File.Thessaloniki.Standard
             return services;
         }
 
-        public static IServiceCollection AddTemporaryDirectoryBasedHumanOutputFilePathProvider<THumanOutputFileNameProvider, TStringlyTypedPathOperator>(this IServiceCollection services)
+        public static IServiceCollection AddHumanOutputFilePathProvider_TemporaryDirectoryBased<THumanOutputFileNameProvider, TStringlyTypedPathOperator>(this IServiceCollection services)
             where THumanOutputFileNameProvider: class, IHumanOutputFileNameProvider
             where TStringlyTypedPathOperator: class, IStringlyTypedPathOperator
         {
             services
                 .AddSingleton<IHumanOutputFilePathProvider, DefaultHumanOutputFilePathProvider>()
-                .AddTemporaryDirectoryBasedHumanOutputFileDirectoryPathProvider()
+                .AddHumanOutputFileDirectoyPathProvider_TemporaryDirectoryBased()
                 .TryAddSingletonFluent<IHumanOutputFileNameProvider, THumanOutputFileNameProvider>()
                 .TryAddSingletonFluent<IStringlyTypedPathOperator, TStringlyTypedPathOperator>()
                 ;
@@ -36,10 +36,10 @@ namespace R5T.Bath.File.Thessaloniki.Standard
             return services;
         }
 
-        public static IServiceCollection AddTemporaryDirectoryBasedHumanOutputFilePathProvider<TStringlyTypedPathOperator>(this IServiceCollection services)
+        public static IServiceCollection AddHumanOutputFilePathProvider_TemporaryDirectoryBased<TStringlyTypedPathOperator>(this IServiceCollection services)
             where TStringlyTypedPathOperator : class, IStringlyTypedPathOperator
         {
-            services.AddTemporaryDirectoryBasedHumanOutputFilePathProvider<DefaultHumanOutputFileNameProvider, TStringlyTypedPathOperator>();
+            services.AddHumanOutputFilePathProvider_TemporaryDirectoryBased<DefaultHumanOutputFileNameProvider, TStringlyTypedPathOperator>();
 
             return services;
         }
