@@ -25,9 +25,9 @@ namespace R5T.Bath.File.Thessaloniki.Standard
         /// <summary>
         /// Adds a C-drive-based <see cref="IHumanOutputFileDirectoryPathProvider"/> service.
         /// </summary>
-        public static ServiceAction<IHumanOutputFileDirectoryPathProvider> AddCDriveHumanOutputFileDirectoryPathProviderAction(this IServiceCollection services)
+        public static IServiceAction<IHumanOutputFileDirectoryPathProvider> AddCDriveHumanOutputFileDirectoryPathProviderAction(this IServiceCollection services)
         {
-            var serviceAction = new ServiceAction<IHumanOutputFileDirectoryPathProvider>(() => services.AddCDriveHumanOutputFileDirectoryPathProvider());
+            var serviceAction = ServiceAction<IHumanOutputFileDirectoryPathProvider>.New(() => services.AddCDriveHumanOutputFileDirectoryPathProvider());
             return serviceAction;
         }
 
@@ -35,7 +35,7 @@ namespace R5T.Bath.File.Thessaloniki.Standard
         /// Adds a C-drive-based <see cref="IHumanOutputFilePathProvider"/> service.
         /// </summary>
         public static IServiceCollection AddCDriveHumanOutputFilePathProvider(this IServiceCollection services,
-            ServiceAction<IHumanOutputFileNameProvider> addHumanOutputFileNameProvider)
+            IServiceAction<IHumanOutputFileNameProvider> addHumanOutputFileNameProvider)
         {
             services.AddDefaultHumanOutputFilePathProvider(
                 services.AddCDriveHumanOutputFileDirectoryPathProviderAction(),
@@ -49,10 +49,10 @@ namespace R5T.Bath.File.Thessaloniki.Standard
         /// <summary>
         /// Adds a C-drive-based <see cref="IHumanOutputFilePathProvider"/> service.
         /// </summary>
-        public static ServiceAction<IHumanOutputFilePathProvider> AddCDriveHumanOutputFilePathProviderAction(this IServiceCollection services,
-            ServiceAction<IHumanOutputFileNameProvider> addHumanOutputFileNameProvider)
+        public static IServiceAction<IHumanOutputFilePathProvider> AddCDriveHumanOutputFilePathProviderAction(this IServiceCollection services,
+            IServiceAction<IHumanOutputFileNameProvider> addHumanOutputFileNameProvider)
         {
-            var serviceAction = new ServiceAction<IHumanOutputFilePathProvider>(() => services.AddCDriveHumanOutputFilePathProvider(addHumanOutputFileNameProvider));
+            var serviceAction = ServiceAction<IHumanOutputFilePathProvider>.New(() => services.AddCDriveHumanOutputFilePathProvider(addHumanOutputFileNameProvider));
             return serviceAction;
         }
 
@@ -69,9 +69,9 @@ namespace R5T.Bath.File.Thessaloniki.Standard
         /// <summary>
         /// Adds a C-drive-based <see cref="IHumanOutputFilePathProvider"/> service using the <see cref="DefaultHumanOutputFileNameProvider"/>.
         /// </summary>
-        public static ServiceAction<IHumanOutputFilePathProvider> AddCDriveHumanOutputFilePathProviderAction(this IServiceCollection services)
+        public static IServiceAction<IHumanOutputFilePathProvider> AddCDriveHumanOutputFilePathProviderAction(this IServiceCollection services)
         {
-            var serviceAction = new ServiceAction<IHumanOutputFilePathProvider>(() => services.AddCDriveHumanOutputFilePathProvider());
+            var serviceAction = ServiceAction<IHumanOutputFilePathProvider>.New(() => services.AddCDriveHumanOutputFilePathProvider());
             return serviceAction;
         }
     }
